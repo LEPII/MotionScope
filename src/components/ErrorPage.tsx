@@ -1,16 +1,16 @@
-import React from 'react'
-import { useRouteError } from "react-router-dom";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
   const error = useRouteError();
-  console.error(error);
+  console.log(error);
 
   return (
     <div>
-      <h1>404 Error</h1>
-      <p> Sorry, this page is not found. </p>
+      <h1>Error</h1>
       <p>
-        <i>{error.statusText || error.message}</i>
+        {isRouteErrorResponse(error) //Check if its 404 or another type of error
+          ? "404 Error: Invalid Page"
+          : "Unexpected Error"}
       </p>
     </div>
   );
