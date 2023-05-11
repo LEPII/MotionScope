@@ -1,5 +1,4 @@
-import React from 'react'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -22,6 +21,6 @@ const Navbar = () => {
       </nav>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
