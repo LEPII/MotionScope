@@ -19,6 +19,10 @@ createUserWithEmailAndPassword(auth, email, password)
   return (
     <div>     
       <form>
+
+                {/* 3 Part SignUp Form  / Part 1 */}
+
+
         <label htmlFor="fname"> First: </label>
         <input type="text" />
         <label htmlFor="lname"> Last: </label>
