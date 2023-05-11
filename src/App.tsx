@@ -1,6 +1,6 @@
-import React from 'react'
-import './App.css'
-import { initializeApp } from "firebase/app";
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
 import dotenv from "dotenv";
@@ -20,12 +20,15 @@ const auth = getAuth(app);
 
 
 function App() {
-
   return (
     <>
-    <h1>MotionScope</h1>
-</>
-  )
+      <Navbar />
+      <h1>MotionScope</h1>
+      <div id="main">
+        <Outlet />
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;
