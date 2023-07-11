@@ -1,118 +1,48 @@
-import React from 'react'
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {useRef} from "react"
+import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
+  const fnameRef = useRef<HTMLInputElement>(null);
+  const lnameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const confirmPasswordRef = useRef<HTMLInputElement>(null);
 
-// const auth = getAuth();
-// createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
+    const firstName = fnameRef.current?.value;
+    const lastName = lnameRef.current?.value;
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+    const confirmPassword = confirmPasswordRef.current?.value;
+
+    console.log(firstName, lastName, email, password, confirmPassword);
+  };
   return (
     <div>     
-      <form>
+   <form onSubmit={handleSubmit}>
+      <label htmlFor="fname">First:</label>
+      <input type="text" id="fname" ref={fnameRef} required />
 
-                {/* 3 Part SignUp Form  / Part 1 */}
+      <label htmlFor="lname">Last:</label>
+      <input type="text" id="lname" ref={lnameRef} required />
 
+      <label htmlFor="email">Email:</label>
+      <input type="email" id="email" ref={emailRef} required />
 
-        <label htmlFor="fname"> First: </label>
-        <input type="text" />
-        <label htmlFor="lname"> Last: </label>
-        <input type="text" />
-        <label htmlFor="mail"> Email: </label>
-        <input type="email" />
-        <label htmlFor="password"> Password: </label>
-        <input type="password" />
-        <label htmlFor="password"> Confirm Password: </label>
-        <input type="password" />
+      <label htmlFor="password">Password:</label>
+      <input type="password" id="password" ref={passwordRef} required />
 
-        {/* 3 Part SignUp Form  / Part 2 */}
+      <label htmlFor="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirm_password" ref={confirmPasswordRef} required />
 
-        <h4> Units Preferred: </h4>
-        <input type="radio" />
-        <label htmlFor="unitPreferred" name="unit_preferred" value="Standard">
-          Standard (Inches, Pounds, etc.)
-        </label>
-        <input type="radio" />
-        <label htmlFor="unitPreferred" name="unit_preferred" value="Metric">
-          Metric (Kilo, Centimeter, etc.)
-        </label>
-        <h4> Gender: </h4>
-        <input type="radio" />
-        <label htmlFor="gender" name="gender" value="Male">
-          Male
-        </label>
-        <input type="radio" />
-        <label htmlFor="gender" name="gender" value="Female">
-          Female
-        </label>
-
-        {/* 3 Part SignUp Form  / Part 3  */}
-
-        <label> Birthday: </label>
-        <input type="date" />
-        <label> Body Weight: </label>
-        <input type="number" min="30" max="600" />
-        <h4> How Many Years of Lifting? </h4>
-        <select>
-          <option htmlFor="Exp" name="years_of_exp" value="1">
-            0-1 years
-          </option>
-          <option htmlFor="Exp" name="years_of_exp" value="2">
-            1-2 years
-          </option>
-          <option htmlFor="Exp" name="years_of_exp" value="3">
-            3-5 years
-          </option>
-          <option htmlFor="Exp" name="years_of_exp" value="4">
-            5+ years
-          </option>
-        </select>
-        <h4> How Many Days Do You Train? </h4>
-        <select>
-          <option htmlFor="training_days" name="train_days" value="1">
-            1 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="2">
-            2 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="3">
-            3 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="4">
-            4 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="5">
-            5 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="6">
-            6 days
-          </option>
-          <option htmlFor="training_days" name="train_days" value="7">
-            7 days
-          </option>
-        </select>
-        <label> Start Date: </label>
-        <input type="date" />
-
-        <label htmlFor="profile_pic">Choose a Profile Picture</label>
-        <input
-          type="file"
-          id="profile_pic"
-          name="profile_pic"
-          accept="image/*"
-        />
-
-        <button type="submit"> Complete Profile </button>
-      </form></div>
+      <button type="submit">Submit</button>
+            <span>Already Have an Account?</span>
+      <button >  <Link to={"/"}>Log In</Link> </button>
+    </form>
+      </div>
+      
   )
 }
 

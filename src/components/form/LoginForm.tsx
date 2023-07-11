@@ -1,32 +1,25 @@
-import React, { useState } from "react";
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 
 const LoginForm = () => {
-  
-// const auth = getAuth();
-// signInWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//   });
+  const [loginData, setLoginData] = useState({
+    user_email: "",
+    user_password: "",
+  })
 
-  const handleSubmit = async (e) => {
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    //
   };
+
 
   return (
     <div>
       <h2>Log In</h2>
-    <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}>        
+          <form
+        onSubmit={handleSubmit}>        
       <label htmlFor="mail"> Username or Email: </label>
         <input required type="email" name="email" />
         <label htmlFor="password"> Password:</label>
@@ -38,7 +31,7 @@ const LoginForm = () => {
       </form>
 
       <span>Not Registered?</span>
-      <button>Sign Up</button>
+      <button >  <Link to={"sign-up"}>Sign Up</Link> </button>
     </div>
   );
 };

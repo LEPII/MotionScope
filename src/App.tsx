@@ -4,12 +4,14 @@ import Navbar from "./components/Navbar";
 
 
 
-function App() {
+
+const App = () => { 
   return (
     <>
       <Navbar />
       <h1>MotionScope</h1>
       <div id="main">
+  
         <Outlet />
       </div>
     </>
