@@ -1,8 +1,26 @@
+import React, {useContext, useState} from "react"
 
-const AuthContext = () => {
-  return (
-    <div>AuthContext</div>
-  )
+interface AuthProviderProps {
+  children: React.ReactNode;
 }
 
-export default AuthContext
+interface AuthContextValue {
+  currentUser: any;
+}
+
+const AuthContext = React.createContext<AuthContextValue | null>(null);
+
+export function useAuth() {
+  return useContext(AuthContext)
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({children}) => {
+  const [currentUser, setCurrentUser] = useState(undefined)
+
+  const value: AuthContextValue = { currentUser };
+
+  return (
+<AuthContext.Provider value={value}> {children} </AuthContext.Provider>
+  )
+  }
+

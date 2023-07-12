@@ -2,6 +2,7 @@ import {useRef} from "react"
 import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
+
   const fnameRef = useRef<HTMLInputElement>(null);
   const lnameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -19,8 +20,11 @@ const SignUpForm = () => {
 
     console.log(firstName, lastName, email, password, confirmPassword);
   };
+  
+  
   return (
     <div>     
+         <h2>Log In</h2>
    <form onSubmit={handleSubmit}>
       <label htmlFor="fname">First:</label>
       <input type="text" id="fname" ref={fnameRef} required />
